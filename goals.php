@@ -11,7 +11,7 @@
 
   <!-- Link for the css folder -->
 <link rel="stylesheet" type="text/css" href="goals.css">
-
+<div id="page-wrap">  
 </head>
 <body>                                                                          
 
@@ -150,68 +150,78 @@
     </div>
   </div>
 </div>
+</div>
+
 <!--Middle container-->
-                <div class="container text-center">
-                  <div class="Sticking-container well">
-                    <div style="background-color:  #0066ff ; padding: 3px; border: 1px ;color: white">
-                    <h3> Recommended Workouts </h3>
-                  </div>
+                
+    <div class= "col-sm-3 col-md-6" >
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+            <h1> Easy Workouts </h1>
+             </div>
+                            
+                            <p>10 min walk</p>
+                            <p>10 push-ups</p>
+                            <p>10 sit ups </p>
+                            <p>20 jumping jacks</p>
+                            <p>5 mountain climbers</p>
+                            <div class="panel-footer">
+                            <p><b> Calories burned 50 </b></p>
+                            </div>
+ 
+       
+      </div>
+    </div>
+  
+
+    <div class= "col-sm-3 col-md-6" >
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+            <h1> Intermediate Workouts </h1>
+          </div>
+           <div class="panel-body">
+
+                            <p>15 min run</p>
+                            <p>30 push-ups</p>
+                            <p>20 sit ups </p>
+                            <p>40 jumping jacks</p>
+                            <p>15 mountain climbers</p>
+                            <div class="panel-footer">
+                            <p><b> Calories burned 100 </b></p>
+             </div>         </div>
+           </div>
+         </div>
+       </div>
+
+           <div class= "col-sm-3 col-md-6" >
+      <div class="panel panel-default text-center">
+        <div class="panel-heading">
+            <h1> Hard Workouts </h1>
+          </div>
+           <div class="panel-body">
+
+                            <p>30 min run</p>
+                            <p>50 push-ups</p>
+                            <p>50 sit ups </p>
+                            <p>50 jumping jacks</p>
+                            <p>30 mountain climbers</p>
+                            <div class="panel-footer">
+                            <p><b> Calories burned 300 </b></p>
+                            </div>
+             </div>
+           </div>
+         </div>
+       </div>
 
 
 
-                          
-                          <div class="panel">
-                            <h4>Cardio:</h4>
-                            <p>10 min run</p>
-                            <p>3x10 box jumps</p>
-                            <p>3x10 burpess</p>
-                            <p>3x12 deadlifts</p>
-                            <p>30 min on bike</p>
-                         
-                      
-                          </div>
-                          <div class="panel">
-                            <h4>Endurance:</h4>
-                            <p>10 min run</p>
-                            <p>4x15 10 min tire flip</p>
-                            <p>4x15 battle ropes</p>
-                            <p>3x20 squats</p>
-                            <p>35 min stairmaster</p>
-                         
-                          
-                          </div>
-                          <div class="panel">
-                            <h4>Abs:</h4>
-                            <p>10 min run</p>
-                            <p>3x12 sit ups</p>
-                            <p>3x12 russian twists</p>
-                            <p>3x12 1 min plank</p>
-                            <p>3x12 hanging leg raises</p>
-                            <p>30 mins on row machine</p>
-                         
-                           
-                          </div>
-                        <button ref="dashboard.php" type="button" onclick="checkAll()"class="btn btn-primary btn-block" data-toggle="modal" data-target="#addWorkoutModal">Add Workout(s) To Dashboard</button>
-
-                      </div>
-<script type="text/javascript"> 
-    //create function of check/uncheck box 
-    function checkAll() { 
-        var inputs = document.querySelectorAll('.workout1'); 
-        for (var i = 0; i < inputs.length; i++) { 
-            inputs[i].checked = false; 
-        } 
-    } 
-    window.onload = function() { 
-        window.addEventListener('load', checkAll, true); 
-    } 
-</script> 
 <!--Bottom container-->
+
                 <div class="container text-center">
                   <div class="Sticking-container well">
                     <h3> Tips to stick with your diet plan!</h3>
                       <h5> Obesity:</h5>
-                      <h4> It's okay to have on cheat meal per week and even a cheat day, eating healthy
+                      <h4> It's okay to have on cheat meal per week and even a cheat day, eating healthy 
                         all the time can suck and get very boring. If you can balance out a day or even a meal
                         where you can eat fried food go for it! You need to remember to control your eating habits,
                         such as what you eat and when you eat it. For example, eating junk food late at night is not okay!</h4>
@@ -227,8 +237,8 @@
                         seem easy but effiecient, in order for you to achieve your goal as soon as possible.</h4>
                   </div>
                 </div>
-</div>
 
+</div>
 
 
 
@@ -244,7 +254,7 @@ footer .glyphicon {
   color: #f4511e;
 }
 </style>
-
+</div>
 <footer class="container-fluid text-center">
   <a href="#myPage" title="To Top">
     <span class="glyphicon glyphicon-chevron-up"></span>

@@ -371,7 +371,7 @@ session_start();
           <?php   
                 include 'commentSystemDis.php';  
                 echo "<form method='POST' action='".setUserComments($con)."'>
-                      <input type='hidden' name='uid' value='Anonymous'>
+                      <input type='hidden' name='uid' >
                       <input type='hidden' name='date' value='".date('Y-m-d H:i:s')."'>
                       <textarea name='message'></textarea><br>
                       <button type='submit' name='commentSubmit'>Comment</button>

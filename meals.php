@@ -15,7 +15,7 @@
 <body>
 <div id="page-wrap">   
                                                                                <!--This page belongs to:Kenny Nawotniak -->
-
+<?php session_start() ?>
 
 
 <!-- Padding for meals -->
@@ -46,7 +46,7 @@
       <ul class="nav navbar-nav navbar-right">
       <li><a href="dashboard.php">Dashboard</a></li>
       <li><a href="goals.php">Goals</a></li>
-      <li><a href="meals.php">Meals</a></li>
+      <li><a href="meals.html">Meals</a></li>
       <li><a href="edata.php">eData</a></li>
       <li><a href="profile.php">Profile</a></li>
       <li><a href="logout.php">Logout</a></li> 
@@ -78,41 +78,103 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-12">
-      
+                    <h4>Health Conditions</h4>
+                 <?php   
+                  
+                  $con = mysqli_connect('127.0.0.1', 'root','','e_fitness_friend');
+                  $user_id = $_SESSION["userid"];
+                  $query = "SELECT * FROM user_data where `user_id`= $user_id";
+                  $query_run = mysqli_query($con, $query);
+                  while($row = mysqli_fetch_array($query_run)){
+
+                    
+                     echo $row['medicalConditions'];
+                  }
+                  ?>    
 
 
     </div>
     <br></br>
        <br></br>
           <br></br>
+          
     <div id="toprow" class="col-sm-12">
     <div id="recommended"class="col-sm-12">
-      <h3> Recommended: Breakfast</h3>
 
-<a href="#" class="btn btn-primary btn-block""btn btn-primary btn-block" data-toggle="modal" data-target="#AddMealPlan">
-  Chicken and Rice
+<!-- UPCOMING MEAL BOX -->
+      <h3>Upcoming Meal:</h3>
+
+</a><a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#MealPlan4">
+  Fettuccine Alfredo
 </a>
 
-<a href="#" class="btn btn-primary btn-block""btn btn-primary btn-block" data-toggle="modal" data-target="#AddMealPlan2">
-  Beef Stir Fry
+          <!-- RECOMMENDED BREAKFAST-->
+      <h3> Breakfast Meals</h3>
+
+<a href="#" class="btn btn-primary btn-block" value="410" name="friedegg" "btn btn-primary btn-block" data-toggle="modal" data-target="#AddMealPlan">
+  Fully Loaded Fried-Egg BLT 
 </a>
-<a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#AddMealPlan3">
-  Pasta Puttanesca
+
+<a href="#" class="btn btn-primary btn-block"value="205" name="berrysmoothie" "btn btn-primary btn-block" data-toggle="modal" data-target="#AddMealPlan2">
+  Berry Yogurt Smoothie
 </a>
+<a href="#" class="btn btn-primary btn-block" value="321" name="burrito"data-toggle="modal" data-target="#AddMealPlan3">
+  Breakfast Burrito
+</a>
+
     </div>
 
     </div>
 
+    <div id="toprow" class="col-sm-12">
+    <div id="recommended"class="col-sm-12">
+
+
+
+          <!-- RECOMMENDED LUNCH-->
+      <h3> Lunch Meals</h3>
+
+<a href="#" class="btn btn-primary btn-block" value="779" name="chickensalad" "btn btn-primary btn-block" data-toggle="modal" data-target="#AddMealPlan4">
+  Chicken Salad
+</a>
+
+<a href="#" class="btn btn-primary btn-block" value="369" name="tunamelt" "btn btn-primary btn-block" data-toggle="modal" data-target="#AddMealPlan5">
+  Tuna Melt
+</a>
+<a href="#" class="btn btn-primary btn-block" value="215" name="riceandlentils" data-toggle="modal" data-target="#AddMealPlan6">
+  Middle Eastern Rice and Lentils 
+</a>
+
+    </div>
+
+    </div>
+
+    <div id="toprow" class="col-sm-12">
+    <div id="recommended"class="col-sm-12">
+
+
+
+
+      <!-- RECOMMENDED DINNER-->
+      <h3> Dinner Meals</h3>
+
+<a href="#" class="btn btn-primary btn-block" value="617" name="killet" "btn btn-primary btn-block" data-toggle="modal" data-target="#AddMealPlan7">
+Lemon Garlic Butter Chicken and Green Beans Skillet
+</a>
+
+<a href="#" class="btn btn-primary btn-block" value="250" name="chickenalfredo" "btn btn-primary btn-block" data-toggle="modal" data-target="#AddMealPlan8">
+  Chicken Alfredo
+</a>
+<a href="#" class="btn btn-primary btn-block" value="397" name="shoyuramen"  data-toggle="modal" data-target="#AddMealPlan9">
+  Shoyu Ramen
+</a>
+
+    </div>
+    </div>
     <div id="addmealandviewmealplan" class="col-sm-12">
-      <div class="col-sm-6">
-      <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#ViewMealPlan">
-  View Meal Plan
-</a>
-      </div>
+
       <div class= "col-sm-6">
-<a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#AddMeal">
-  Add Meal
-</a>
+
 </div>
     </div>
 
@@ -121,390 +183,188 @@
     <br></br>
     <div id="upcoming" class="col-sm-6">
 
-      <h3>Upcoming Meal:</h3>
 
-</a><a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#MealPlan4">
-  Fettuccine Alfredo
-</a>
 
-    </div>
-    
-    
-    <div id="mostrecent"class="col-sm-6">
-      <h3>Most Recent Meal:</h3>
-<a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#MealPlan5">
-  Lemon Garlic Shrimp and Grits
-</a>
+
     </div>
     </div>
   </div>
 </div>
 
 
-<div class="modal fade" id="ViewMealPlan" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myMealPlan">View Meal Plan</h4>
-      </div>
-      <div class="modal-body" display="inline-block">
-        
-        <h3>Today:</h3>
-        <h3>Lunch</h3>
-          </a><a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#MealPlan4" class="col-sm-6">
-            Fettuccine Alfredo
-          </a>
-          <h3>Dinner</h3>
-          <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#MealPlan5" class="col-sm-6">
-            Lemon Garlic Shrimp and Grits
-          </a>
-          
-      <div class="modal-footer">
-        <a href="#" class="btn btn-default" data-toggle="modal" data-target="#ViewMealPlan2" class="col-sm-6">
-            This Week
-          </a>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-</div>
-    </div>
-  </div>
-</div>
 
-<div class="modal fade" id="ViewMealPlan2" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+
+
+
+      <!-- MODAL FOOD POPOUT -->
+<form action="mealssql.php" method="post">
+<div class="modal fade" id="AddMealPlan" name="friedegg" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="myMealPlan">View Meal Plan</h4>
-      </div>
-      <div class="modal-body" display="inline-block">
-        
-        <h3>This Week:</h3>
-        
-          </a><a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#ViewMealPlan3" class="col-sm-6">
-            Monday
-          </a>
-          
-          <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#ViewMealPlan4" class="col-sm-6">
-            Tuesday
-          </a>
-          
-          <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#ViewMealPlan5" class="col-sm-6">
-            Wednesday
-          </a>
-          
-          <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#ViewMealPlan5" class="col-sm-6">
-            Thursday
-          </a>
-          
-          <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#ViewMealPlan5" class="col-sm-6">
-            Friday
-          </a>
-          
-          <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#ViewMealPlan5" class="col-sm-6">
-            Saturday
-          </a>
-          
-          <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#ViewMealPlan5" class="col-sm-6">
-            Sunday
-          </a>
-          
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
-        <a href="#" class="btn btn-default" data-toggle="modal" data-target="#ViewMealPlan6" class="col-sm-6">
-            This Month
-          </a>
-      </div>
-</div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="ViewMealPlan3" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myMealPlan">View Meal Plan</h4>
-      </div>
-      <div class="modal-body" display="inline-block">
-        
-        <h3>Monday:</h3>
-        <h3>Lunch</h3>
-          </a><a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#MealPlan4" class="col-sm-6">
-            Fettuccine Alfredo
-          </a>
-          <h3>Dinner</h3>
-          <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#MealPlan5" class="col-sm-6">
-            Lemon Garlic Shrimp and Grits
-          </a>
-          
-      <div class="modal-footer">
-        
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-</div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="ViewMealPlan4" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myMealPlan">View Meal Plan</h4>
-      </div>
-      <div class="modal-body" display="inline-block">
-        
-        <h3>Tuesday:</h3>
-        <h3>Breakfast</h3>
-        </a><a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#MealPlan2" class="col-sm-6">
-            Beef Stir Fry
-          </a>
-        <h3>Lunch</h3>
-          </a><a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#MealPlan4" class="col-sm-6">
-            Fettuccine Alfredo
-          </a>
-          <h3>Dinner</h3>
-          <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#MealPlan5" class="col-sm-6">
-            Lemon Garlic Shrimp and Grits
-          </a>
-          
-      <div class="modal-footer">
-        
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-</div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="ViewMealPlan5" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myMealPlan">View Meal Plan</h4>
-      </div>
-      <div class="modal-body" display="inline-block">
-        
-        <h3>Day Not Planned Yet, Recommended:</h3>
-        <h3>Breakfast</h3>
-        </a><a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#AddMealPlan3" class="col-sm-6">
-            Pasta Puttanesca
-          </a>
-        <h3>Lunch</h3>
-          </a><a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#MealPlan4" class="col-sm-6">
-            Fettuccine Alfredo
-          </a>
-          <h3>Dinner</h3>
-          <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#MealPlan5" class="col-sm-6">
-            Lemon Garlic Shrimp and Grits
-          </a>
-          
-      <div class="modal-footer">
-        
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-</div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="ViewMealPlan6" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myMealPlan">View Meal Plan</h4>
-      </div>
-      <div class="modal-body" display="inline-block">
-        <div class="month"> 
-  <ul>
-    <li class="prev">&#10094;</li>
-    <li class="next">&#10095;</li>
-    <li>June<br><span style="font-size:18px">2020</span></li>
-  </ul>
-</div>
-        <ul class="weekdays">
-  <li>Mo</li>
-  <li>Tu</li>
-  <li>We</li>
-  <li>Th</li>
-  <li>Fr</li>
-  <li>Sa</li>
-  <li>Su</li>
-</ul>
-          <ul class="days">
-            <li>31</li>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-            <li>6</li>
-            <li>7</li>
-            <li>8</li>
-            <li>9</li>
-            <li>10</li>
-            <li>11</li>
-            <li>12</li>
-            <li>13</li>
-            <li>14</li>
-            <li>15</li>
-            <li>16</li>
-            <li>17</li>
-            <li>18</li>
-            <li>19</li>
-            <li>20</li>
-            <li>21</li>
-            <li><span class="active">22</span></li>
-            <li>23</li>
-            <li>24</li>
-            <li>25</li>
-            <li>26</li>
-            <li>27</li>
-            <li>28</li>
-            <li>29</li>
-            <li>30</li>
-          </ul>
-      <div class="modal-footer">
-        
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-</div>
-    </div>
-  </div>
-</div> 
-<div class="modal fade" id="AddMeal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myMealPlan">Add Meal</h4>
-      </div>
-      <div class="modal-body" display="inline-block">
-        
-          <div class="topnav">
-  
-  <input type="text" placeholder="Search Meals...">
-</div>
-          <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#AddMealPlan" class="col-sm-6">
-            Chicken and Rice
-          </a>
-          
-          <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#AddMealPlan2" class="col-sm-6">
-            Beef Stir Fry
-          </a>
-          
-          <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#AddMealPlan3" class="col-sm-6">
-            Pasta Puttanesca
-          </a>
-          <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#AddMealPlan4" class="col-sm-6">
-            Fettuccine Alfredo
-          </a>
-          
-          <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#AddMealPlan5" class="col-sm-6">
-            Lemon Garlic Shrimp and Grits
-          </a>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Next -></button>
-      </div>
-</div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="MealPlan" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myMealPlan">Chicken and Rice </h4>
+      <h4 class="modal-title" name="friedegg" id="AddMealPlan">Fully Loaded Fried-Egg BLT</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
       </div>
       <div class="modal-body">
-        <h4>Calories = 328</h4>
+        <h4>Calories = 410</h4>
         <h4>Time: Breakfast</h4>
-        <h4>Date: MM/DD/YYYY</h4>
-        <img src="https://nitrocdn.com/wNaVTMyblCPjzAPXbeDDfFKcpvICVOVU/assets/static/source/rev-cfa187f/wp-content/uploads/2020/03/nanas-epic-chicken-and-rice-recipe-10-650x925.jpg" alt="Chicken and Rice.jpg" style="width:250px;height:300px;">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Remove Meal</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="MealPlan2" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myMealPlan">Beef Stir Fry </h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h4>Calories = 299</h4>
-        <h4>Time: Lunch</h4>
-        <h4>Date: MM/DD/YYYY</h4>
+		<h4>Good for: Hypertension, Obesity, Diabetes</h4>
+		<img src="https://hips.hearstapps.com/ghk.h-cdn.co/assets/17/16/1280x1919/gallery-1492462652-ghk050117ykbreakfast01.jpg?resize=768:*" alt="BLT Image" height="266" width="177">
+		<a href="https://www.goodhousekeeping.com/food-recipes/a43766/fully-loaded-fried-egg-blt-recipe/">Recipe</a>
         
-        <img src="http://www.butcheress.co.uk/wp-content/uploads/2017/11/maxresdefault.jpg" alt="Beef Stir Fry.jpg" style="width:250px;height:300px;">
+        
       </div>
       <div class="modal-footer">
+        <td><input type="text" placeholder="Calories" name="foodCalories" required></td>
+    </form>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-default"  data-dismiss="modal">Remove Meal</button>
+  <input class="btn btn-primary btn-block" data-toggle="modal " type ="submit" value="Submit" onclick="myFunction()" 
+  data-target="#readMoreModal"></input>
+
+
+  <script>
+    function myFunction() {
+    alert("Sucscess! Your data has been recorded!");
+        }
+        </script>
+
+    
       </div>
     </div>
   </div>
 </div>
-<div class="modal fade" id="MealPlan3" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+
+
+
+
+
+<form action="mealssql.php" method="post">
+<div class="modal fade" id="AddMealPlan2"  name="berrysmoothie" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="myMealPlan">Pasta Puttanesca </h4>
+        <h4 class="modal-title" name="berrysmoothie" id="myMealPlan"> Berry and Yogurt Smoothie </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+	  
+      <div class="modal-body">
+        <h4>Calories = 205</h4>
+        <h4>Time: Breakfast</h4>
+		<h4>Good for: Hypertension, Obesity, Diabetes</h4>
+        <img src="https://i0.wp.com/chefsavvy.com/wp-content/uploads/20141219-DSC_0807.jpg?w=665&ssl=1" alt="Smoothie Image" height="266" width="177">
+		<a href="https://chefsavvy.com/healthy-berry-yogurt-smoothie/">Recipe</a>
+        </div>
+      
+      <div class="modal-footer">
+        <td><input type="text" placeholder="Calories" name="foodCalories" required></td>
+    </form>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  <input class="btn btn-primary btn-block" data-toggle="modal " type ="submit" value="Submit" onclick="myFunction()" 
+  data-target="#readMoreModal"></input>
+
+
+  <script>
+    function myFunction() {
+    alert("Sucscess! Your data has been recorded!");
+        }
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<form action="mealssql.php" method="post">
+<div class="modal fade" id="AddMealPlan3" name="burrito" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"  name="burrito" id="myMealPlan">Breakfast Burrito</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
       </div>
       <div class="modal-body">
-        <h4>Calories = 281</h4>
-        <h4>Time: Dinner</h4>
-        <h4>Date: MM/DD/YYYY</h4>
-        <img src="https://www.simplyrecipes.com/wp-content/uploads/2013/02/pasta-puttanesca-fork-vertical-1600-600x888.jpg" alt="Beef Stir Fry.jpg" style="width:250px;height:300px;">
+        <h4>Calories = 321</h4>
+        <h4>Time: Breakfast</h4>
+		<h4>Good for: Obesity, Diabetes</h4>
+		<h4>Bad for: Hypertension</h4>
+        <img src="https://www.kimscravings.com/wp-content/uploads/2018/10/506A0372-640x960.jpg" alt="Burrito Image" height="266" width="177">
+		<a href="https://www.kimscravings.com/healthy-breakfast-burrito-recipe/">Recipe</a>
+
       </div>
       <div class="modal-footer">
+               <td><input type="text" placeholder="Calories" name="foodCalories" required></td>
+    </form>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal"> Remove Meal</button>
+  <input class="btn btn-primary btn-block" data-toggle="modal " type ="submit" value="Submit" onclick="myFunction()" 
+  data-target="#readMoreModal"></input>
+
+
+  <script>
+    function myFunction() {
+    alert("Sucscess! Your data has been recorded!");
+        }
+        </script>
       </div>
     </div>
   </div>
 </div>
-<div class="modal fade" id="MealPlan4" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+
+
+
+<form action="mealssql.php" method="post">
+<div class="modal fade" id="AddMealPlan4" name="chickensalad" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="myMealPlan">Fettuccine Alfredo </h4>
+        <h4 class="modal-title" name="chickensalad" id="myMealPlan">  Chicken Salad</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
       </div>
       <div id = "mp4" class="modal-body">
           <div>
-            <h4>Calories = 415</h4>
+            <h4>Calories = 779</h4>
             <h4>Time: Lunch</h4>
-            <h4>Date: Today</h4>
-            <a href="https://www.modernhoney.com/fettuccine-alfredo/">Recipe</a>
+			<h4>Good for: Hypertension, Obesity, Diabetes</h4>
+			<img src="https://www.cookingclassy.com/wp-content/uploads/2019/05/chicken-salad-14-768x1152.jpg" alt="Chicken Salad Image" height="266" width="177">
+            <a href="https://www.cookingclassy.com/chicken-salad-recipe/">Recipe</a>
           </div>
           <div>
-        <img src="https://www.modernhoney.com/wp-content/uploads/2018/08/Fettuccine-Alfredo-Recipe-1.jpg" alt="Beef Stir Fry.jpg" style="width:250px;height:300px;">
         </div>
-        
       </div>
       <div class="modal-footer">
+              <td><input type="text" placeholder="Calories" name="foodCalories" required></td>
+    </form>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal"> Remove Meal</button>
+  <input class="btn btn-primary btn-block" data-toggle="modal " type ="submit" value="Submit" onclick="myFunction()" 
+  data-target="#readMoreModal"></input>
+
+
+  <script>
+    function myFunction() {
+    alert("Sucscess! Your data has been recorded!");
+        }
+        </script>
       </div>
     </div>
   </div>
 </div>
-  </div><div class="modal fade" id="MealPlan5" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+
+
+
+
+<form action="mealssql.php" method="post">
+  </div><div class="modal fade" id="AddMealPlan5" name="tunamelt" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="myMealPlan">Lemon Garlic Shrimp and Grits </h4>
+        <h4 class="modal-title" name="tunamelt" id="myMealPlan">Tuna Melt</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
@@ -512,184 +372,189 @@
       <div class="modal-body">
         <div>
           <h4>Calories = 367</h4>
-          <h4>Time: Dinner</h4>
-          <h4>Date: Today</h4>
-          <a href="https://www.foodnetwork.com/recipes/food-network-kitchen/lemon-garlic-shrimp-and-grits-recipe-1973610">Recipe</a>
+          <h4>Time: Lunch</h4>
+		<h4>Good for: Hypertension, Obesity, Diabetes</h4>
+		<img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/tuna-melt-081-1550261085.jpg?crop=0.646xw:0.431xh;0.243xw,0.388xh&resize=768:*" alt="Tuna Melt Image" height="266" width="177">
+        <a href="https://www.delish.com/cooking/recipe-ideas/a26146096/tuna-melt-recipe/">Recipe</a>
         </div>
-        <img src="https://food.fnr.sndimg.com/content/dam/images/food/fullset/2010/11/1/1/FNM_120110-WN-Dinners-021_s4x3.jpg.rend.hgtvcom.826.620.suffix/1382539568110.jpeg" alt="Beef Stir Fry.jpg" style="width:250px;height:300px;">
+
       </div>
       <div class="modal-footer">
+               <td><input type="text" placeholder="Calories" name="foodCalories" required></td>
+    </form>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Remove Meal</button>
+  <input class="btn btn-primary btn-block" data-toggle="modal " type ="submit" value="Submit" onclick="myFunction()" 
+  data-target="#readMoreModal"></input>
+
+
+  <script>
+    function myFunction() {
+    alert("Sucscess! Your data has been recorded!");
+        }
+        </script>
       </div>
     </div>
   </div>
 </div>
-<div class="modal fade" id="AddMealPlan" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+
+
+<form action="mealssql.php" method="post">
+  </div><div class="modal fade" id="AddMealPlan6" name="riceandlentils" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="myMealPlan">Chicken and Rice </h4>
+        <h4 class="modal-title" name="riceandlentils" id="myMealPlan">Middle Eastern Rice and Lentils</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
       </div>
       <div class="modal-body">
-        <h4>Calories = 328</h4>
-        <label for="date1">Date:</label>
-        <input type="date" id="date1" name="Date:">
-        <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Time
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Breakfast</a>
-    <a class="dropdown-item" href="#">Lunch</a>
-    <a class="dropdown-item" href="#">Dinner</a>
-    <a class="dropdown-item" href="#">Snack</a>
-  </div>
-</div>
-        <img src="https://nitrocdn.com/wNaVTMyblCPjzAPXbeDDfFKcpvICVOVU/assets/static/source/rev-cfa187f/wp-content/uploads/2020/03/nanas-epic-chicken-and-rice-recipe-10-650x925.jpg" alt="Chicken and Rice.jpg" style="width:250px;height:300px;">
-</div>
+        <div>
+          <h4>Calories = 215</h4>
+          <h4>Time: Lunch</h4>
+		<h4>Good for: Hypertension, Obesity, Diabetes</h4>
+		<img src="https://food.fnr.sndimg.com/content/dam/images/food/fullset/2014/4/8/1/FNM_050114-Middle-Eastern-Rice-and-Lentils-Recipe_s4x3.jpg.rend.hgtvcom.966.725.suffix/1397166616290.jpeg" alt="Tuna Melt Image" height="266" width="266">
+        <a href="https://www.foodnetwork.com/recipes/food-network-kitchen/middle-eastern-rice-and-lentils-3362812">Recipe</a>
+        </div>
+
       </div>
       <div class="modal-footer">
+                <td><input type="text" placeholder="Calories" name="foodCalories" required></td>
+    </form>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Add Meal</button>
+  <input class="btn btn-primary btn-block" data-toggle="modal " type ="submit" value="Submit" onclick="myFunction()" 
+  data-target="#readMoreModal"></input>
+
+
+  <script>
+    function myFunction() {
+    alert("Sucscess! Your data has been recorded!");
+        }
+        </script>
       </div>
     </div>
   </div>
 </div>
-<div class="modal fade" id="AddMealPlan2" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+
+
+<form action="mealssql.php" method="post">
+  </div><div class="modal fade" id="AddMealPlan7" name="killet" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="myMealPlan">Beef Stir Fry </h4>
+        <h4 class="modal-title" name="killet" id="myMealPlan">Lemon Garlic Butter Chicken and Green Beans Skillet</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
       </div>
       <div class="modal-body">
-        <h4>Calories = 299</h4>
-        <label for="date1">Date:</label>
-        <input type="date" id="date1" name="Date:">
-        <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Time
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Breakfast</a>
-    <a class="dropdown-item" href="#">Lunch</a>
-    <a class="dropdown-item" href="#">Dinner</a>
-    <a class="dropdown-item" href="#">Snack</a>
-  </div>
-</div>
-        <img src="http://www.butcheress.co.uk/wp-content/uploads/2017/11/maxresdefault.jpg" alt="Chicken and Rice.jpg" style="width:250px;height:300px;">
+        <div>
+          <h4>Calories = 617</h4>
+          <h4>Time: Dinner</h4>
+        <h4>Good for: Obesity, Diabetes</h4>
+		<h4>Bad for: Hypertension</h4>
+        <img src="https://www.eatwell101.com/wp-content/uploads/2019/03/chicken-and-green-beans-recipe4.jpg" alt="Lemon Garlic Chicken Image" height="266" width="177">
+		<a href="https://www.eatwell101.com/lemon-garlic-butter-thighs-and-green-beans-skillet">Recipe</a>
+        </div>
+
       </div>
       <div class="modal-footer">
+               <td><input type="text" placeholder="Calories" name="foodCalories" required></td>
+    </form>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Add Meal</button>
+  <input class="btn btn-primary btn-block" data-toggle="modal " type ="submit" value="Submit" onclick="myFunction()" 
+  data-target="#readMoreModal"></input>
+
+
+  <script>
+    function myFunction() {
+    alert("Sucscess! Your data has been recorded!");
+        }
+        </script>
       </div>
     </div>
   </div>
 </div>
-<div class="modal fade" id="AddMealPlan3" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+
+<form action="mealssql.php" method="post">
+  </div><div class="modal fade" id="AddMealPlan8" name="chickenalfredo" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="myMealPlan">Pasta Puttanesca </h4>
+        <h4 class="modal-title" name="chickenalfredo" id="myMealPlan">  Chicken Alfredo </h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
       </div>
       <div class="modal-body">
-        <h4>Calories = 281</h4>
-        <label for="date1">Date:</label>
-        <input type="date" id="date1" name="Date:">
-        <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Time
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Breakfast</a>
-    <a class="dropdown-item" href="#">Lunch</a>
-    <a class="dropdown-item" href="#">Dinner</a>
-    <a class="dropdown-item" href="#">Snack</a>
-  </div>
-</div>
-        <img src="https://www.simplyrecipes.com/wp-content/uploads/2013/02/pasta-puttanesca-fork-vertical-1600-600x888.jpg" alt="Beef Stir Fry.jpg" style="width:250px;height:300px;">
+        <div>
+          <h4>Calories = 250</h4>
+          <h4>Time: Dinner</h4>
+		<h4>Good for: Obesity, Diabetes</h4>
+		<h4>Bad for: Hypertension</h4>
+        <img src="https://food.fnr.sndimg.com/content/dam/images/food/fullset/2015/9/15/1/FNK_Chicken-Fettucine-Alfredo_s4x3.jpg.rend.hgtvcom.826.620.suffix/1442375396342.jpeg" alt="Alfredo Image" height="266" width="266">
+		<a href="https://www.foodnetwork.com/recipes/food-network-kitchen/chicken-fettuccine-alfredo-3364118">Recipe</a>
+        </div>
+
       </div>
       <div class="modal-footer">
+                <td><input type="text" placeholder="Calories" name="foodCalories" required></td>
+    </form>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Add Meal</button>
+  <input class="btn btn-primary btn-block" data-toggle="modal " type ="submit" value="Submit" onclick="myFunction()" 
+  data-target="#readMoreModal"></input>
+
+
+  <script>
+    function myFunction() {
+    alert("Sucscess! Your data has been recorded!");
+        }
+        </script>
       </div>
     </div>
   </div>
 </div>
-<div class="modal fade" id="AddMealPlan4" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+
+
+<form action="mealssql.php" method="post">
+  </div><div class="modal fade" id="AddMealPlan9" name="shoyuramen" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="myMealPlan">Fettuccine Alfredo </h4>
+        <h4 class="modal-title" name="shoyuramen" id="myMealPlan">SHOYU RAMEN – 醤油ラメーン</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
       </div>
       <div class="modal-body">
-        <h4>Calories = 425</h4>
-        <label for="date1">Date:</label>
-        <input type="date" id="date1" name="Date:">
-        <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Time
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Breakfast</a>
-    <a class="dropdown-item" href="#">Lunch</a>
-    <a class="dropdown-item" href="#">Dinner</a>
-    <a class="dropdown-item" href="#">Snack</a>
-  </div>
-</div>
-        <img src="https://www.modernhoney.com/wp-content/uploads/2018/08/Fettuccine-Alfredo-Recipe-1.jpg" alt="Beef Stir Fry.jpg" style="width:250px;height:300px;">
+        <div>
+          <h4>Calories = 397</h4>
+          <h4>Time: Dinner</h4>
+		<h4>Good for: Obesity, Diabetes</h4>
+		<h4>Bad for: Hypertension</h4>
+        <img src="https://pickledplum.com/wp-content/uploads/2018/02/shoyu-ramen-1OPTM.jpg" alt="Ramen Image" height="266" width="177">
+		<a href="https://pickledplum.com/shoyu-ramen/">Recipe</a>
+        </div>
+
       </div>
       <div class="modal-footer">
+                <td><input type="text" placeholder="Calories" name="foodCalories" required></td>
+    </form>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Add Meal</button>
+  <input class="btn btn-primary btn-block" data-toggle="modal " type ="submit" value="Submit" onclick="myFunction()" 
+  data-target="#readMoreModal"></input>
+
+
+  <script>
+    function myFunction() {
+    alert("Sucscess! Your data has been recorded!");
+        }
+        </script>
       </div>
     </div>
   </div>
 </div>
-<div class="modal fade" id="AddMealPlan5" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myMealPlan">Lemon Garlic Shrimp and Grits </h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h4>Calories = 367</h4>
-        <label for="date1">Date:</label>
-        <input type="date" id="date1" name="Date:">
-        <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Time
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Breakfast</a>
-    <a class="dropdown-item" href="#">Lunch</a>
-    <a class="dropdown-item" href="#">Dinner</a>
-    <a class="dropdown-item" href="#">Snack</a>
-  </div>
-</div>
-        <img src="https://food.fnr.sndimg.com/content/dam/images/food/fullset/2010/11/1/1/FNM_120110-WN-Dinners-021_s4x3.jpg.rend.hgtvcom.826.620.suffix/1382539568110.jpeg" alt="Beef Stir Fry.jpg" style="width:250px;height:300px;">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Add Meal</button>
-      </div>
-    </div>
-  </div>
+
 </div>
 
                                                             <!--Up-arrow return to top-->
@@ -700,6 +565,9 @@ footer .glyphicon {
   color: #f4511e;
 }
 </style>
+
+
+
 
 <footer class="container-fluid text-center">
   <a href="#myPage" title="To Top">

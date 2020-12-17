@@ -1,10 +1,4 @@
 <!DOCTYPE html>
-<?php session_start();
-if (isset($_POST["submit"])){
-  $_SESSION['name'] = htmlentities($_POST['name']);
-
-}
-?>
 <html lang="en">
 <head>
   <title>Signup</title>
@@ -15,7 +9,7 @@ if (isset($_POST["submit"])){
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
   <!-- Link for the css folder -->
-  <link rel="stylesheet" type="text/css" href="eFitnessFriend.css">
+  <link rel="stylesheet" type="text/css" href="iFitnessFriend.css">
 
 </head>
 <body>
@@ -50,8 +44,8 @@ if (isset($_POST["submit"])){
       <ul class="nav navbar-nav navbar-right">
         <li><a href="home.html">Home</a></li>
         <li><a href="services.html">Services</a></li>
-        <li><a href="pricing.html">Plans</a></li>
-        <li><a href="login.php">Login</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="login.html">Login</a></li>
       </ul>
     </div>
   </div>
@@ -82,54 +76,15 @@ if (isset($_POST["submit"])){
     <input type="text" name="email" placeholder="Email">
     <input type="text" name="uid" placeholder="Username">
     <input type="password" name="pwd" placeholder="Password">
-    <input type="password" name="pwdrepeat" placeholder="Repeat Password">
+    <input type="text" name="pwdrepeat" placeholder="Repeat Password">
 
     <button type ="submit" name="submit">Sign Up</button>
     </form>
  
 
-    <?php
-    if(isset($_GET["error"])){
-      if($_GET["error"] == "emptyinput"){
-
-        echo"<p>Fill in all fields!</p>";
-      }
-
-      else if($_GET["error"] == "invaliduid"){
-        echo"<p>Choose a proper username!</p>";
-
-      }
-
-        else if($_GET["error"] == "invalidemail"){
-        echo"<p>Choose a proper username!</p>";
-
-      }
-       else if($_GET["error"] == "passwordsdontmatch"){
-        echo"<p>Passwords don't match!</p>";
-
-      }
-
-        else if($_GET["error"] == "stmtfailed"){
-        echo"<p>Somthing went wrong, try again!</p>";
-
-      }
-        else if($_GET["error"] == "usernametaken"){
-        echo"<p>Username already taken!</p>";
-
-      }
-        else if($_GET["error"] == "none"){
-        echo"<p>You have signed up!</p>";
-
-      }
-
-    }
-
-
-
-
-
-
-    ?>
+    <label>
+      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+    </label>
 
 
     <div class="clearfix">
@@ -137,7 +92,10 @@ if (isset($_POST["submit"])){
       <button type="button" class="cancelbtn">Cancel</button>
     </a>
 
-
+      <a href='login.html'>
+ <button type="button" class="button">SignUp</button>
+</a>
+<input type="submit" value="Insert">
 
             </div>
           </div>

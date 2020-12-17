@@ -17,9 +17,11 @@ $heartRate = $_POST['heartRate'];
 $bloodSugar = $_POST['bloodSugar'];
 $targetBloodSugar = $_POST['targetBloodSugar'];
 $targetCalories = $_POST['targetCalories'];
+$age = $_POST['age'];
+$height = $_POST['height'];
 
-$sql = "INSERT INTO user_data(user_id,medicalConditions,currentWeight,targetWeight,bloodPressure,targetBloodPressure,heartRate,bloodSugar,targetBloodSugar,targetCalories)
-	VALUES ('$user_id','$medicalConditions','$currentWeight','$targetWeight' ,'$bloodPressure' ,'$targetBloodPressure', '$heartRate','$bloodSugar' ,'$targetBloodSugar', '$targetCalories')";
+$sql = "INSERT INTO user_data(user_id,medicalConditions,currentWeight,targetWeight,bloodPressure,targetBloodPressure,heartRate,bloodSugar,targetBloodSugar,targetCalories,age,height)
+	VALUES ('$user_id','$medicalConditions','$currentWeight','$targetWeight' ,'$bloodPressure' ,'$targetBloodPressure', '$heartRate','$bloodSugar' ,'$targetBloodSugar', '$targetCalories', '$age', '$height')";
 
 
 		

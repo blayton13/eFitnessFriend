@@ -7,27 +7,39 @@ if(!$con){
 	echo 'Databse Not Connected To Server';
 }
 
+if(isset($_POST["submit"])){
+	
+$user_id = $_SESSION["userid"];
 $docName = $_POST['docName'];
 $location = $_POST['location'];
 $city = $_POST['city'];
 $phone = $_POST['phone'];
-$user_id = $_SESSION["userid"];
+
+
+$sql = "INSERT INTO user_docinfo(docName,location,city,phone,user_id)VALUES ('$docName' ,'$location','$city', '$phone','$user_id')";
 
 
 
-$sql = "INSERT INTO user_docInfo(docName,location,city,phone,user_id)VALUES ('$docName' ,'$location','$city', '$phone','$user_id')";
 
 
 
 if(!mysqli_query($con,$sql)){
 	
-header("location: edata.php");
+header("location: dashboard.php");
 	exit();
 }
 else{
-header("location: edata.php");
+header("location: dashboard.php");
 	exit();
 }
+
+}
+
+
+
+
+
+
 
 
 ?>

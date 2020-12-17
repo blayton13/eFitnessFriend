@@ -78,12 +78,23 @@
                   }
                   
                   ?>
+                <?php   
+                           $con = mysqli_connect('127.0.0.1', 'root','','e_fitness_friend');
+                           $user_id = $_SESSION["userid"];
+                           $query = "SELECT * FROM user_data where `user_id`= $user_id";
+                           $query_run = mysqli_query($con, $query);
+                           while($row = mysqli_fetch_array($query_run)){
+                             $currentWeight = $row['currentWeight'];
+                             $height = $row['height'];     
+                             $age = $row['age'];   
+                           }
+                        ?>
                <div class="col-sm-6 text-left">
                   <div class="spacer"></div>
                   <p>Name: <?php echo $usersName ?></p>
-                  <p>Age: 25</p>
-                  <p>Height: 5'10"</p>
-                  <p>Weight: 425
+                  <p>Age: <?php echo $age?></p>
+                  <p>Height: <?php echo $height?></p>
+                  <p>Weight: <?php echo $currentWeight?></p>
                   <p>
                </div>
                <!-- Data Modal -->

@@ -94,18 +94,17 @@
     <thead>
       <tr>
         <h1>Custom Meal Input</h1>
-        <th>Time of day</th>
+        
         <th>Food</th>
-        <th>Amount</th>
+      
         <th>Calories</th>
       </tr>
     </thead>
    
  <tbody>
       <tr>
-        <td><input type="text" placeholder="Time" name="timeOfDay" required></td>
+     
         <td><input type="text" placeholder="Food" name="foodType" required></td>
-        <td><input type="text" placeholder="Amount" name="foodAmount" required></td>
         <td><input type="text" placeholder="Calories" name="foodCalories" required></td>
       </tr>
 
@@ -162,26 +161,28 @@
         }
         </script>
       
-  <form action="dashboardWorkouts.php" method="post">
-  <div class="container">           
-    <table class="table table-striped table table-bordered">
-      <thead>
-        <tr>
-          <h1>Goals Workout Input</h1>
-          <th>Workout</th>
-          <th>Reps or Miles</th>
-          <th>Calories Burned</th>
+     <form action="dashboardWorkouts.php" method="post">
+<div class="container">           
+  <table class="table table-striped table table-bordered">
+   
+    <thead>
+      <tr>
+        <h1>Goals Workout Input</h1>
+        <th>Workout</th>
+        <th>Reps or Miles</th>
+        <th>Calories Burned</th>
+      </tr>
+    </thead>
+ <tbody>
+      <tr>
+        <td><input type="text" placeholder="Workout" name="userWorkout" required></td>
+        <td><input type="text" placeholder="Reps or Miles" name="userRepMiles" required></td>
+        <td><input type="text" placeholder="Calories Burned" name="userCaloriesBurned" required></td>
         </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><input type="text" placeholder="Workout" name="userWorkout" required></td>
-          <td><input type="text" placeholder="Reps or Miles" name="userRepMiles" required></td>
-          <td><input type="text" placeholder="Calories Burned" name="userCaloriesBurned" required></td>
-        </tr>
-      </tbody>
-    </table>
-  </form>
+     </tbody>
+      
+      </table>
+      </form>
   <input class="btn btn-primary btn-block" data-toggle="modal " type ="submit" value="Submit" onclick="myFunction()" 
   data-target="#readMoreModal"></input>
 
@@ -232,17 +233,28 @@
                   
                   $con = mysqli_connect('127.0.0.1', 'root','','e_fitness_friend');
                   $user_id = $_SESSION["userid"];
-                  $query = "SELECT * FROM user_meals where `user_id`= $user_id";
+                  $query = "SELECT foodCalories ,SUM(foodCalories) FROM user_meals where `user_id`= $user_id";
                   $query_run = mysqli_query($con, $query);
                   while($row = mysqli_fetch_array($query_run)){
 
-                    $sum = $row['foodCalories'];
+                    $sum = $row['SUM(foodCalories)'];
                      echo $sum; 
                   }
                   ?>
           <hr></hr>
           <p2><strong>Burned Calories:<strong></p2>
-          <h6> 300</h6>
+                <?php   
+                  
+                  $con = mysqli_connect('127.0.0.1', 'root','','e_fitness_friend');
+                  $user_id = $_SESSION["userid"];
+                  $query = "SELECT userCaloriesBurned ,SUM(userCaloriesBurned) FROM user_workouts where `user_id`= $user_id";
+                  $query_run = mysqli_query($con, $query);
+                  while($row = mysqli_fetch_array($query_run)){
+
+                    $sum = $row['SUM(userCaloriesBurned)'];
+                     echo $sum; 
+                  }
+                  ?>
           
 
         </div>

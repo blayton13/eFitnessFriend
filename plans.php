@@ -7,12 +7,17 @@ if(!$con){
 	echo 'Databse Not Connected To Server';
 }
 
-
-$foodType = $_POST['foodType'];
-$foodCalories = $_POST['foodCalories'];
+	
 $user_id = $_SESSION["userid"];
+$monthly = $_POST['monthly'];
+$quartly = $_POST['quartly'];
+$annual = $_POST['annual'];
 
-$sql = "INSERT INTO user_meals(foodType,foodCalories,user_id)VALUES ('$foodType', '$foodCalories','$user_id')";
+
+
+$sql = "INSERT INTO user_plans(user_id,monthly,quartly,annual)
+VALUES ('$user_id','$monthly' ,'$quartly','$annual')";
+
 
 
 
@@ -25,17 +30,9 @@ header("location: dashboard.php");
 	exit();
 }
 else{
-header("location: dashboard.php");
+header("location: profile.php");
 	exit();
 }
-
-
-
-
-
-
-
-
 
 
 ?>

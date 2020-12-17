@@ -394,69 +394,6 @@
                      </div>
                   </div>
                </div>
-               <div class="col-sm-12  text-center well">
-
-              
-                  <h3>Share Settings</h3>
-                  <div class="panel panel-default">
-                     <div class="panel-body">
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-8 text-left">
-                           <div class="checkbox">
-                              <label><input name="setchk" type="checkbox" value="Blood Sugar" disabled>Blood Sugar</label>
-                           </div>
-                           <div class="checkbox">
-                              <label><input name="setchk" type="checkbox" value="Weight" disabled>Weight</label>
-                           </div>
-                           <div class="checkbox">
-                              <label><input name="setchk" type="checkbox" value="Blood Pressure" disabled>Blood Pressure</label>
-                           </div>
-                           <div class="checkbox">
-                              <label><input name="setchk" type="checkbox" value="Resting Heart Rate" disabled>Resting Heart Rate</label>
-                           </div>
-                        </div>
-                        <div class="col-sm-3"></div>
-                        <div class="col-sm-6">
-                           <button id="shrUpdt" type="button" class="btn btn-primary btn-hc active" data-toggle="modal" data-target="#shareModal" disabled>Update</button>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <!-- Share Modal -->
-               <div id="shareModal" class="modal fade" role="dialog">
-                  <div class="modal-dialog">
-                     <div class="modal-content text-left">
-                        <div class="modal-header text-center">
-                           <button type="button" class="close text-right" data-dismiss="modal">&times;</button>
-                           <h4 class="modal-title">Share Settings Confirmation</h4>
-                        </div>
-                        <div class="modal-body">
-                           <p id="shrinput">
-                           </p>
-                        </div>
-                        <div class="modal-footer">
-                           <div class="col-sm-6">
-                              <button type="button" class="btn btn-primary btn-dat-can" data-dismiss="modal">Cancel</button>
-                           </div>
-                           <div class="col-sm-6">
-                              <button type="button" class="btn btn-primary btn-dat" data-dismiss="modal">Confirm</button>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <script>
-                  $(document).ready(function() {
-                    $("#shrUpdt").click(function() {
-                      var c = $("#shareModal #shrinput");
-                      var HTMLStructure = "<h4>You have selected: </h4>";
-                        $.each($("input[name='setchk']:checked"), function() {
-                          HTMLStructure += '<br>' + $(this).val();
-                        });
-                        $(c).html(HTMLStructure);
-                    });
-                  });
-               </script>
             </div>
             <div class="col-sm-6 col-md-offset-0 text-center well">
                <h3>Daily Thoughts</h3>
